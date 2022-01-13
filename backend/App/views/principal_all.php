@@ -1,6 +1,7 @@
 <?php echo $header; ?>
-
-    <nav class="container-fluid py-4 col-md-7 navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -22,9 +23,9 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Default</li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Analytics</li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Default</h6>
+                <h6 class="font-weight-bolder mb-0">Analytics</h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
                 <a href="javascript:;" class="nav-link text-body p-0">
@@ -39,13 +40,13 @@
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)">
+                        <input type="text" class="form-control" placeholder="Type here...">
                     </div>
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
                         <a href="../../pages/authentication/signin/illustration.html" class="nav-link text-body font-weight-bold px-0" target="_blank">
-                            <i class="fa fa-user me-sm-1" aria-hidden="true"></i>
+                            <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none">Sign In</span>
                         </a>
                     </li>
@@ -60,12 +61,12 @@
                     </li>
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0">
-                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
+                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                         </a>
                     </li>
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bell cursor-pointer" aria-hidden="true"></i>
+                            <i class="fa fa-bell cursor-pointer"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                             <li class="mb-2">
@@ -79,7 +80,7 @@
                                                 <span class="font-weight-bold">New message</span> from Laur
                                             </h6>
                                             <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1" aria-hidden="true"></i>
+                                                <i class="fa fa-clock me-1"></i>
                                                 13 minutes ago
                                             </p>
                                         </div>
@@ -97,7 +98,7 @@
                                                 <span class="font-weight-bold">New album</span> by Travis Scott
                                             </h6>
                                             <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1" aria-hidden="true"></i>
+                                                <i class="fa fa-clock me-1"></i>
                                                 1 day
                                             </p>
                                         </div>
@@ -127,7 +128,7 @@
                                                 Payment successfully completed
                                             </h6>
                                             <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1" aria-hidden="true"></i>
+                                                <i class="fa fa-clock me-1"></i>
                                                 2 days
                                             </p>
                                         </div>
@@ -140,6 +141,236 @@
             </div>
         </div>
     </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-3 col-md-12">
+        <div class="card card-body" id="profile">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-auto col-4">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="/assets/img/bruce-mars.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                    </div>
+                </div>
+                <div class="col-sm-auto col-8">
+                    <div class="h-100">
+                        <h5 class="mb-1 font-weight-bolder col-sm-auto col-8">
+                            Empresas
+                        </h5>
+                        <p class="mb-0 font-weight-bold text-sm col-sm-auto col-8">
+                            Registradas
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex"></div>
+            </div>
+        </div>
+        <br>
+        <a href="/Empresa/Add" type="button" class="btn btn-primary btn-sm">Nuevo</a>
+        <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+        <br>
+        <div class="col-12">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"></th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Clave</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Razon Social</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">RFC</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Telefono</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Alta</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">John Michael</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Manager</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-info"></i>
+                        <span class="text-dark text-xs">positive</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">john@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">23/04/18</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">43431</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Programator</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-info"></i>
+                        <span class="text-dark text-xs">positive</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">alexa@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">93021</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">Laurent Perrier</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Executive</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-dark"></i>
+                        <span class="text-dark text-xs">neutral</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">laurent@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">10392</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">Michael Levi</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Backend developer</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-info"></i>
+                        <span class="text-dark text-xs">positive</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">michael@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">34002</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">Richard Gran</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Manager</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-danger"></i>
+                        <span class="text-dark text-xs">negative</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">richard@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">91879</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">Miriam Eric</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-sm text-secondary mb-0">Programtor</p>
+                            </td>
+                            <td>
+                      <span class="badge badge-dot me-4">
+                        <i class="bg-info"></i>
+                        <span class="text-dark text-xs">positive</span>
+                      </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-secondary mb-0 text-sm">miriam@user.com</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-sm">23042</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 
 <?php echo $footer; ?>
