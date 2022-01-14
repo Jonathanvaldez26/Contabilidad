@@ -18,7 +18,7 @@
                                             </g>
                                         </g>
                                     </g>
-                                </g>
+                                </g>90'980879087
                             </svg>
                         </a>
                     </li>
@@ -151,20 +151,20 @@
                 </div>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="form-group col-6">
                             <label class="form-label">Razón Social *</label>
                             <div class="input-group">
                                 <input id="razon_social" name="razon_social" class="form-control" type="text" placeholder="Grupo LAHE S.A. de C.V." required="required" onfocus="focused(this)" onfocusout="defocused(this)">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="form-group col-6">
                             <label class="form-label">RFC *</label>
                             <div class="input-group">
                                 <input id="rfc" name="rfc" class="form-control" type="text" placeholder="GLA100407TM0" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-6">
                             <label class="form-label mt-4">Email *</label>
                             <div class="input-group">
@@ -172,14 +172,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-6">
                             <label class="form-label mt-4">Número de Teléfono 1 *</label>
                             <div class="input-group">
                                 <input id="telefono_uno" name="telefono_uno" class="form-control" type="number" placeholder="+52 565 631 620" onfocus="focused(this)" onfocusout="defocused(this)">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="form-group col-6">
                             <label class="form-label mt-4">Número de Teléfono 2</label>
                             <div class="input-group">
                                 <input id="telefono_dos" name="telefono_dos" class="form-control" type="number" placeholder="+52 565 631 621" onfocus="focused(this)" onfocusout="defocused(this)">
@@ -187,16 +187,16 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-12">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="domicilio">Domicilio Fiscal<span class="required"> *</span></label>
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="domicilio_fiscal">Domicilio Fiscal<span class="required"> *</span></label>
                             <div class="input-group">
-                                <textarea class="form-control" name="domicilio" id="domicilio" placeholder="Dr. Enrique Gonzalez Martinez No.232, Col. Santa Maria la Ribera, Deleg. Cuahutemoc, C.P 06400, Distrito Federal, México. "></textarea>
+                                <textarea class="form-control" name="domicilio_fiscal" id="domicilio_fiscal" placeholder="Dr. Enrique Gonzalez Martinez No.232, Col. Santa Maria la Ribera, Deleg. Cuahutemoc, C.P 06400, Distrito Federal, México. "></textarea>
                             </div>
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-6">
                             <label class="form-label">Sitio Web</label>
                             <div class="input-group">
@@ -205,17 +205,18 @@
                         </div>
                     </div>
                     <br>
-                    <div class="" id="profile">
+                    <div class="form-group">
                         <div class="row justify-content-center align-items-center">
-
-
                             <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
                                 <div class="form-check form-switch ms-2">
-                                    <button class="btn btn-outline-primary mb-0 ms-auto" type="button" name="btnAdd" id="btnAdd">Registrar</button>
-                                    <button class="btn btn-outline-secondary mb-0 ms-2" type="button" name="btnCancel" id="btnCancel">Cancelar</button>
+                                    <button class="btn btn-outline-primary mb-0 ms-auto" type="submit" id="btnAdd">Registrar</button>
+                                    <button class="btn btn-outline-secondary mb-0 ms-2" type="button" id="btnCancel">Cancelar</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div id="resultado">
+
                     </div>
                    </div>
             </div>

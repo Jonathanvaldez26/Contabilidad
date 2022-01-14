@@ -412,13 +412,37 @@ html;
 
     public function empresaAdd(){
       $empresa = new \stdClass();
-      $nombre = MasterDom::getDataAll('nombre');
-      $nombre = MasterDom::procesoAcentosNormal($nombre);
-      $empresa->_nombre = $nombre;
-      $descripcion = MasterDom::getDataAll('descripcion');
-      $descripcion = MasterDom::procesoAcentosNormal($descripcion);
-      $empresa->_descripcion = $descripcion;
+
+      $rfc = MasterDom::getDataAll('rfc');
+      $rfc = MasterDom::procesoAcentosNormal($rfc);
+      $empresa->_rfc = $rfc;
+
+      $rest = substr("rfc", 0, -10);
+      $empresa->_clave = $rest;
+
+      $razon_social = MasterDom::getDataAll('razon_social');
+      $razon_social = MasterDom::procesoAcentosNormal($razon_social);
+      $empresa->_razon_social = $razon_social;
+
+      $email= MasterDom::getDataAll('email');
+      $email= MasterDom::procesoAcentosNormal($email);
+      $empresa->_email = $email;
+
+      $telefono_uno= MasterDom::getDataAll('telefono_uno');
+      $empresa->_telefono_uno = $telefono_uno;
+
+      $telefono_dos= MasterDom::getDataAll('telefono_dos');
+      $empresa->_telefono_dos = $telefono_dos;
+
+      $domicilio_fiscal= MasterDom::getDataAll('domicilio_fiscal');
+      $domicilio_fiscal= MasterDom::procesoAcentosNormal($domicilio_fiscal);
+      $empresa->_domicilio_fiscal = $domicilio_fiscal;
+
+      $sitio_web= MasterDom::getDataAll('sitio_web');
+      $empresa->_sitio_web = $sitio_web;
+
       $empresa->_status = MasterDom::getData('status');
+
       $id = EmpresaDao::insert($empresa);
       if($id >= 1){
         $this->alerta($id,'add');

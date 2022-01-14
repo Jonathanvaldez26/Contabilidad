@@ -20,16 +20,17 @@ sql;
     public static function insert($empresa){
 	    $mysqli = Database::getInstance(1);
       $query=<<<sql
-        INSERT INTO catalogo_empresa VALUES(null, :clave, :rfc, :razon_social, :email, :telefono_uno, :telefono_dos, :domicilio_fiscal, :sitio_web)
+        INSERT INTO catalogo_empresa VALUES(null, :clave, :rfc, :razon_social, :email, :telefono_uno, :telefono_dos, :domicilio_fiscal, :sitio_web, NOW(), 1)
 sql;
         $parametros = array(
-          ':rfc'=>$empresa->_nombre,
-          ':razon_social'=>$empresa->_descripcion,
+          ':clave'=>$empresa->_clave,
+          ':rfc'=>$empresa->_rfc,
+          ':razon_social'=>$empresa->_razon_social,
           ':email'=>$empresa->_email,
           'telefono_uno'=>$empresa->_telefono_uno,
           'telefono_dos'=>$empresa->_telefono_dos,
           'domicilio_fiscal'=>$empresa->_domicilio_fiscal,
-          'sitio_web'=>$empresa->_sitio_web,
+          'sitio_web'=>$empresa->_sitio_web
         );
 
         $id = $mysqli->insert($query,$parametros);
