@@ -12,7 +12,7 @@ class Empresa implements Crud{
     public static function getAll(){
       $mysqli = Database::getInstance();
       $query=<<<sql
-        SELECT e.catalogo_empresa_id, e.nombre, e.descripcion, s.nombre as status FROM catalogo_empresa e JOIN catalogo_status s ON s.catalogo_status_id = e.status WHERE s.catalogo_status_id != 2 ORDER BY e.catalogo_empresa_id ASC 
+SELECT e.catalogo_empresa_id, e.clave, e.rfc, e.razon_social, e.email, e.telefono_uno, e.telefono_dos, e.domicilio_fiscal, e.sitio_web, e.fecha_alta, s.nombre as status FROM catalogo_empresa e JOIN catalogo_status s ON s.catalogo_status_id = e.status ORDER BY e.catalogo_empresa_id ASC;
 sql;
       return $mysqli->queryAll($query);
     }

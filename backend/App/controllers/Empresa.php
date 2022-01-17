@@ -95,20 +95,45 @@ class Empresa extends Controller{
       </script>
 html;
       $empresas = EmpresaDao::getAll();
-      $usuario = $this->__usuario;
-      $editarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 5)==1)? "" : "style=\"display:none;\"";
-      $eliminarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 6)==1)? "" : "style=\"display:none;\"";
+      //$usuario = $this->__usuario;
+      //$editarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 5)==1)? "" : "style=\"display:none;\"";
+      //$eliminarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 6)==1)? "" : "style=\"display:none;\"";
       $tabla= '';
+      $status= '';
       foreach ($empresas as $key => $value) {
+          if($value['status'] = 1){
+              $status =<<<html
+                 <span class="badge badge-dot me-1">
+                        <i class="bg-success"></i>
+                 </span>   
+html;
+          }elseif ($value['status'] = 2)
+          {
+              $status =<<<html
+                 <span class="badge badge-dot me-1">
+                        <i class="bg-danger"></i>
+                 </span>   
+html;
+          }
         $tabla.=<<<html
                 <tr>
                 <td><input type="checkbox" name="borrar[]" value="{$value['catalogo_empresa_id']}"/></td>
-                <td>{$value['nombre']}</td>
-                <td>{$value['descripcion']}</td>
-                <td>{$value['status']}</td>
+                <td><h6 class="mb-0 text-sm">{$status}{$value['clave']}</h6></td>
+                <td>
+                    <div class="d-flex px-2 py-1">
+                         <div>
+                              <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
+                         </div>
+                         <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{$value['rfc']}</h6>
+                         </div>
+                    </div>
+                </td>
+                <td><p class="text-sm text-secondary mb-0">{$value['razon_social']}</p></td>
+                <td><span class="text-secondary text-sm">{$value['fecha_alta']}</span></td>
                 <td class="center" >
-                    <a href="/Empresa/edit/{$value['catalogo_empresa_id']}" {$editarHidden} type="submit" name="id" class="btn btn-primary"><span class="fa fa-pencil-square-o" style="color:white"></span> </a>
-                    <a href="/Empresa/show/{$value['catalogo_empresa_id']}" type="submit" name="id_empresa" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" style="color:white"></span> </a>
+                    <a href="/Empresa/edit/{$value['catalogo_empresa_id']}" {$editarHidden} type="submit" name="id" class="btn btn-outline-primary"><span class="fa fa-pencil-square-o"></span> </a>
+                    <a href="/Empresa/show/{$value['catalogo_empresa_id']}" type="submit" name="id_empresa" class="btn btn-outline-success"><span class="fa fa-eye" ></span> </a>
                 </td>
                 </tr>
 html;
@@ -120,8 +145,8 @@ html;
       View::set('pdfHidden',$pdfHidden);
       View::set('excelHidden',$excelHidden);
       View::set('agregarHidden',$agregarHidden);
-      View::set('editarHidden',$editarHidden);
-      View::set('eliminarHidden',$eliminarHidden);
+      //View::set('editarHidden',$editarHidden);
+      //View::set('eliminarHidden',$eliminarHidden);
       View::set('tabla',$tabla);
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));

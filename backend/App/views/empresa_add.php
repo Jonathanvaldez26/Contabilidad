@@ -22,8 +22,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Clientes</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Empresas</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Clientes</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Empresa/">Empresas</a></li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agregar</li>
                 </ol>
             </nav>

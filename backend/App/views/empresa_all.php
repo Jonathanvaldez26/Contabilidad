@@ -22,8 +22,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Clientes</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Empresas</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Clientes</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Empresas</a></li>
                 </ol>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -147,7 +147,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-auto col-4">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="/assets/img/bruce-mars.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                        <img src="/assets/img/Empresa.png" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-sm-auto col-8">
@@ -175,194 +175,13 @@
                         <tr>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"></th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Clave</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Razon Social</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">RFC</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Telefono</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RFC</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Razon Social</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Alta</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">John Michael</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Manager</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">john@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">23/04/18</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">43431</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Programator</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">alexa@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">93021</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Executive</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-dark"></i>
-                        <span class="text-dark text-xs">neutral</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">laurent@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">10392</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Michael Levi</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Backend developer</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">michael@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">34002</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Richard Gran</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Manager</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-danger"></i>
-                        <span class="text-dark text-xs">negative</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">richard@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">91879</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-sm text-secondary mb-0">Programtor</p>
-                            </td>
-                            <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-secondary mb-0 text-sm">miriam@user.com</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-sm">23042</span>
-                            </td>
-                        </tr>
+                            <?php echo $tabla; ?>
                         </tbody>
                     </table>
                 </div>
