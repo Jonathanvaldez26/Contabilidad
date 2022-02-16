@@ -7,30 +7,29 @@ use \Core\MasterDom;
 use \App\interfaces\Crud;
 use \App\controllers\UtileriasLog;
 
-class Empresa implements Crud{
+class Encargado implements Crud{
 
     public static function getAll(){
       $mysqli = Database::getInstance();
       $query=<<<sql
-SELECT e.catalogo_empresa_id, e.clave, e.rfc, e.razon_social, e.email, e.telefono_uno, e.telefono_dos, e.domicilio_fiscal, e.sitio_web, e.fecha_alta FROM catalogo_empresa e ORDER BY e.catalogo_empresa_id ASC;
-sql;
+      SELECT e.catalogo_encargado_id, e.clave, e.nombre, e.apellido_paterno, apellido_materno, e.email, e.telefono, e.catalogo_empresa_id as status FROM catalogo_encargado e ORDER BY e.catalogo_encargado_id ASC;
+      sql;
       return $mysqli->queryAll($query);
     }
 
-    public static function insert($empresa){
+    public static function insert($encargado){
 	    $mysqli = Database::getInstance(1);
       $query=<<<sql
-        INSERT INTO catalogo_empresa VALUES(null, :clave, :rfc, :razon_social, :email, :telefono_uno, :telefono_dos, :domicilio_fiscal, :sitio_web, NOW(), 1)
+        INSERT INTO catalogo_encargado VALUES(:catalogo_encargado_id, :clave, :nombre, :apellido_paterno, :apellido_materno, :email, :telefono, 1)
 sql;
         $parametros = array(
-          ':clave'=>$empresa->_clave,
-          ':rfc'=>$empresa->_rfc,
-          ':razon_social'=>$empresa->_razon_social,
-          ':email'=>$empresa->_email,
-          'telefono_uno'=>$empresa->_telefono_uno,
-          'telefono_dos'=>$empresa->_telefono_dos,
-          'domicilio_fiscal'=>$empresa->_domicilio_fiscal,
-          'sitio_web'=>$empresa->_sitio_web
+          ':catalogo_encargado_id'=>$encargado->_catalogo_encargado_id+1,
+          ':clave'=>$encargado->_clave,
+          'nombre'=>$encargado->_nombre,
+          ':apellido_paterno'=>$encargado->_apellido_paterno,
+          ':apellido_materno'=>$encargado->_apellido_materno,
+          ':email'=>$encargado->_email,
+          'telefono'=>$encargado->_telefono,
         );
 
         $id = $mysqli->insert($query,$parametros);
@@ -39,37 +38,35 @@ sql;
         $accion->_parametros = $parametros;
         $accion->_id = $id;
 
-        // UtileriasLog::addAccion($accion);
+        UtileriasLog::addAccion($accion);
         return $id;
     }
 
-    public static function update($empresa){
-      $mysqli = Database::getInstance(1);
+    public static function update($encargado){
+      $mysqli = Database::getInstance(true);
       $query=<<<sql
-      UPDATE catalogo_empresa SET clave = :clave, rfc = :rfc, razon_social = :razon_social, email = :email, telefono = :telefono WHERE catalogo_empresa_id = :id
+      UPDATE catalogo_encargado SET nombre = :nombre, apellido_paterno = :apellido_paterno, apellido_materno = :apellido_materno, telefono = :telefono WHERE catalogo_encargado_id = :id
 sql;
       $parametros = array(
-        ':clave'=>$empresa->_clave,
-        ':rfc'=>$empresa->_rfc,
-        ':razon_social'=>$empresa->_razon_social,
-        ':email'=>$empresa->_email,
-        'telefono_uno'=>$empresa->_telefono_uno,
-        'telefono_dos'=>$empresa->_telefono_dos,
-        'domicilio_fiscal'=>$empresa->_domicilio_fiscal,
-        'sitio_web'=>$empresa->_sitio_web
+        ':id'=>$encargado->_catalogo_encargado_id,
+        ':nombre'=>$encargado->_nombre,
+        ':apellido_paterno'=>$encargado->_apellido_paterno,
+        ':apellido_materno'=>$encargado->_apellido_materno,
+        ':telefono'=>$encargado->_telefono
       );
       $accion = new \stdClass();
       $accion->_sql= $query;
       $accion->_parametros = $parametros;
-      $accion->_id = $empresa->_catalogo_empresa_id;
-      // UtileriasLog::addAccion($accion);
+      $accion->_id = $encargado->_catalogo_encargado_id;
+      UtileriasLog::addAccion($accion);
         return $mysqli->update($query, $parametros);
     }
 
     public static function delete($id){
       $mysqli = Database::getInstance();
       $select = <<<sql
-      SELECT e.catalogo_empresa_id FROM catalogo_empresa e WHERE e.catalogo_empresa_id = $id
+      SELECT e.catalogo_encargado_id FROM catalogo_encargado e JOIN catalogo_colaboradores c
+      ON e.catalogo_encargado_id = c.catalogo_encargado_id WHERE e.catalogo_encargado_id = $id
 sql;
 
       $sqlSelect = $mysqli->queryAll($select);
@@ -77,7 +74,7 @@ sql;
         return array('seccion'=>2, 'id'=>$id); // NO elimina
       }else{
         $query = <<<sql
-        UPDATE catalogo_empresa SET status = 2 WHERE catalogo_empresa.catalogo_empresa_id = $id;
+        UPDATE catalogo_encargado SET status = 2 WHERE catalogo_encargado.catalogo_encargado_id = $id;
 sql;
         $mysqli->update($query);
 
@@ -85,7 +82,7 @@ sql;
         $accion->_sql= $query;
         $accion->_parametros = $parametros;
         $accion->_id = $id;
-        // UtileriasLog::addAccion($accion);
+        UtileriasLog::addAccion($accion);
         return array('seccion'=>1, 'id'=>$id); // Cambia el status a eliminado
       }
     }
@@ -93,8 +90,8 @@ sql;
     public static function verificarRelacion($id){
       $mysqli = Database::getInstance();
       $select = <<<sql
-      SELECT e.catalogo_empresa_id FROM catalogo_empresa e JOIN catalogo_colaboradores c
-      ON e.catalogo_empresa_id = c.catalogo_empresa_id WHERE e.catalogo_empresa_id = $id
+      SELECT e.catalogo_encargado_id FROM catalogo_encargado e JOIN catalogo_colaboradores c
+      ON e.catalogo_encargado_id = c.catalogo_encargado_id WHERE e.catalogo_encargado_id = $id
 sql;
       $sqlSelect = $mysqli->queryAll($select);
       if(count($sqlSelect) >= 1)
@@ -107,15 +104,15 @@ sql;
     public static function getById($id){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT catalogo_empresa_id, clave, rfc, razon_social, email, telefono_uno, telefono_dos, domicilio_fiscal, sitio_web, fecha_alta, status FROM catalogo_empresa WHERE catalogo_empresa_id = 5;
-      sql;
+      SELECT ce.catalogo_encargado_id, ce.nombre, ce.apellido_paterno FROM catalogo_encargado AS ce WHERE catalogo_encargado_id = $id 
+sql;
       return $mysqli->queryOne($query);
     }
 
     public static function getByIdReporte($id){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT e.catalogo_empresa_id, e.nombre, e.descripcion, e.status, s.nombre as status FROM catalogo_empresa e JOIN catalogo_status s ON s.catalogo_status_id = e.status WHERE e.status!=2 AND e.catalogo_empresa_id = $id
+      SELECT e.catalogo_encargado_id, e.nombre, e.descripcion, e.status, s.nombre as status FROM catalogo_encargado e JOIN catalogo_status s ON s.catalogo_status_id = e.status WHERE e.status!=2 AND e.catalogo_encargado_id = $id
 sql;
 
       return $mysqli->queryOne($query);
@@ -130,10 +127,10 @@ sql;
       return $mysqli->queryAll($query);
     }
 
-    public static function getRFC($rfc_empresa){
+    public static function getNombre($nombre_encargado){
       $mysqli = Database::getInstance();
       $query =<<<sql
-      SELECT * FROM `catalogo_empresa` WHERE `rfc` LIKE '$rfc_empresa' 
+      SELECT * FROM `catalogo_encargado` WHERE `nombre` LIKE '$nombre_encargado' 
 sql;
       $dato = $mysqli->queryOne($query);
       return ($dato>=1) ? 1 : 2 ;
@@ -142,7 +139,7 @@ sql;
     public static function getIdComparacion($id, $nombre){
       $mysqli = Database::getInstance();
       $query =<<<sql
-      SELECT * FROM catalogo_empresa WHERE catalogo_empresa_id = '$id' AND nombre Like '$nombre' 
+      SELECT * FROM catalogo_encargado WHERE catalogo_encargado_id = '$id' AND nombre Like '$nombre' 
 sql;
       $dato = $mysqli->queryOne($query);
       // 0
