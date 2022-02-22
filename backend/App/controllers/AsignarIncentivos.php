@@ -20,7 +20,7 @@ class AsignarIncentivos extends Controller{
         $usuario = $this->__usuario;
 
         if(Controller::getPermisosUsuario($this->__usuario, "Asignar_incentivos",1) == 0)
-          header('Location: /Principal/');
+          header('Location: /Home/');
     }
 
     public function index() {

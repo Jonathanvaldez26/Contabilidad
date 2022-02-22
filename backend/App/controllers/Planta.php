@@ -19,7 +19,7 @@ class Planta extends Controller{
         View::set('footer',$this->_contenedor->footer());
 
         if(Controller::getPermisosUsuario($this->__usuario, "seccion_plantas", 1) ==0)
-          header('Location: /Principal/');
+          header('Location: /Home/');
     }
 
     public function getUsuario(){

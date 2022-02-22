@@ -18,7 +18,7 @@ class AdminPeriodo extends Controller{
         View::set('header',$this->_contenedor->header());
         View::set('footer',$this->_contenedor->footer());
         if(Controller::getPermisosUsuario($this->__usuario, "seccion_periodo", 1) ==0)
-          header('Location: /Principal/');
+          header('Location: /Home/');
 
     }
 

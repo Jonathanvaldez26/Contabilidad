@@ -19,7 +19,7 @@ class Empresa extends Controller{
         View::set('footer',$this->_contenedor->footer());
 
         //if(Controller::getPermisosUsuario($this->__usuario, "seccion_empresas", 1) ==0)
-        //header('Location: /Principal/');
+        //header('Location: /Home/');
         //Este codigo es para dar permisos de administrador o a los usuarios
 
     }
@@ -61,7 +61,6 @@ class Empresa extends Controller{
               }
 
             });
-
 
             $("#export_pdf").click(function(){
               $('#all').attr('action', '/Empresa/generarPDF/');
@@ -145,8 +144,6 @@ html;
       View::set('pdfHidden',$pdfHidden);
       View::set('excelHidden',$excelHidden);
       View::set('agregarHidden',$agregarHidden);
-      //View::set('editarHidden',$editarHidden);
-      //View::set('eliminarHidden',$eliminarHidden);
       View::set('tabla',$tabla);
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
@@ -249,6 +246,47 @@ html;
       View::render("empresa_add");
       View::set('footer',$this->_contenedor->footer($extraFooter));
 
+    }
+
+    public function empresaAdd(){
+        $empresa = new \stdClass();
+
+        $rfc = MasterDom::getDataAll('rfc');
+        $rfc = MasterDom::procesoAcentosNormal($rfc);
+        $empresa->_rfc = $rfc;
+
+        $rest = substr("rfc", 0, -10);
+        $empresa->_clave = $rest;
+
+        $razon_social = MasterDom::getDataAll('razon_social');
+        $razon_social = MasterDom::procesoAcentosNormal($razon_social);
+        $empresa->_razon_social = $razon_social;
+
+        $email= MasterDom::getDataAll('email');
+        $email= MasterDom::procesoAcentosNormal($email);
+        $empresa->_email = $email;
+
+        $telefono_uno= MasterDom::getDataAll('telefono_uno');
+        $empresa->_telefono_uno = $telefono_uno;
+
+        $telefono_dos= MasterDom::getDataAll('telefono_dos');
+        $empresa->_telefono_dos = $telefono_dos;
+
+        $domicilio_fiscal= MasterDom::getDataAll('domicilio_fiscal');
+        $domicilio_fiscal= MasterDom::procesoAcentosNormal($domicilio_fiscal);
+        $empresa->_domicilio_fiscal = $domicilio_fiscal;
+
+        $sitio_web= MasterDom::getDataAll('sitio_web');
+        $empresa->_sitio_web = $sitio_web;
+
+        $empresa->_status = MasterDom::getData('status');
+
+        $id = EmpresaDao::insert($empresa);
+        if($id >= 1){
+            $this->alerta($id,'add');
+        }else{
+            $this->alerta($id,'error');
+        }
     }
 
     public function edit($id){
@@ -433,47 +471,6 @@ html;
         }
       }
       $this->alertas("Eliminacion de Empresas", $array, "/Empresa/");
-    }
-
-    public function empresaAdd(){
-      $empresa = new \stdClass();
-
-      $rfc = MasterDom::getDataAll('rfc');
-      $rfc = MasterDom::procesoAcentosNormal($rfc);
-      $empresa->_rfc = $rfc;
-
-      $rest = substr("rfc", 0, -10);
-      $empresa->_clave = $rest;
-
-      $razon_social = MasterDom::getDataAll('razon_social');
-      $razon_social = MasterDom::procesoAcentosNormal($razon_social);
-      $empresa->_razon_social = $razon_social;
-
-      $email= MasterDom::getDataAll('email');
-      $email= MasterDom::procesoAcentosNormal($email);
-      $empresa->_email = $email;
-
-      $telefono_uno= MasterDom::getDataAll('telefono_uno');
-      $empresa->_telefono_uno = $telefono_uno;
-
-      $telefono_dos= MasterDom::getDataAll('telefono_dos');
-      $empresa->_telefono_dos = $telefono_dos;
-
-      $domicilio_fiscal= MasterDom::getDataAll('domicilio_fiscal');
-      $domicilio_fiscal= MasterDom::procesoAcentosNormal($domicilio_fiscal);
-      $empresa->_domicilio_fiscal = $domicilio_fiscal;
-
-      $sitio_web= MasterDom::getDataAll('sitio_web');
-      $empresa->_sitio_web = $sitio_web;
-
-      $empresa->_status = MasterDom::getData('status');
-
-      $id = EmpresaDao::insert($empresa);
-      if($id >= 1){
-        $this->alerta($id,'add');
-      }else{
-        $this->alerta($id,'error');
-      }
     }
 
     public function empresaEdit(){

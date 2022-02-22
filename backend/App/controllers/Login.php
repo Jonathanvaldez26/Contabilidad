@@ -161,7 +161,7 @@ html;
         session_start();
         $_SESSION['usuario'] = $user['usuario'];
         $_SESSION['nombre'] = $user['nombre'];
-        header("location: /Principal/");
+        header("location: /Home/");
     }
 
     public function cerrarSession(){

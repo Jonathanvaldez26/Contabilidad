@@ -18,7 +18,7 @@ class AdminIncidencia extends Controller{
         View::set('footer',$this->_contenedor->footer());
 
         if(Controller::getPermisosUsuario($this->__usuario, "Registro_incidencias", 1) ==0)
-          header('Location: /Principal/');
+          header('Location: /Home/');
     }
 
     public function index() {

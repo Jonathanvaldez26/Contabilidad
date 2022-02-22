@@ -182,6 +182,10 @@
                         </thead>
                         <tbody>
                             <?php echo $tabla; ?>
+                            <?php
+
+                                echo $rfc;
+                            ?>
                         </tbody>
                     </table>
                 </div>

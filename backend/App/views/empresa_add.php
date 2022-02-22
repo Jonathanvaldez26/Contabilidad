@@ -208,7 +208,7 @@
                     <div class="form-group">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                                <div class="form-check form-switch ms-2">
+                                <div id="btn-reg" class="form-check form-switch ms-2">
                                     <button class="btn btn-outline-primary mb-0 ms-auto" type="submit" id="btnAdd">Registrar</button>
                                     <button class="btn btn-outline-secondary mb-0 ms-2" type="button" id="btnCancel">Cancelar</button>
                                 </div>

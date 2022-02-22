@@ -3034,7 +3034,7 @@ textarea.form-control-lg {
 }
 
 .form-switch {
-  padding-left: 3rem;
+  padding-left: 9%;
 }
 
 .form-switch .form-check-input {
@@ -31577,6 +31577,10 @@ Github: https://github.com/fiduswriter/Simple-DataTables
     float: left;
     margin-top: 1rem;
   }
+
+  div#btn-reg{
+    padding-left: 9%;
+  }
 }
 
 .gu-mirror {
@@ -36774,5 +36778,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+
 
 /*# sourceMappingURL=dashboard-pro.css.map */
