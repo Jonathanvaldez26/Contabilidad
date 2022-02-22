@@ -1,4 +1,4 @@
-<?php echo $header;?>
+<?php echo $header; ?>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -18,13 +18,12 @@
                                             </g>
                                         </g>
                                     </g>
-                                </g>90'980879087
+                                </g>
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Clientes</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Empresas</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agregar</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Principal/">Principal</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Cuentas</li>
                 </ol>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -38,18 +37,23 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href="../../pages/authentication/signin/illustration.html" class="nav-link text-body font-weight-bold px-0" target="_blank">
+                        <a href="/Login/cerrarSession" class="nav-link text-body font-weight-bold px-0">
+                            <i class="fa fa-power-off me-sm-1"></i>
+                            <span class="d-sm-inline d-none">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav  justify-content-end">
+                    <!-- <li class="nav-item d-flex align-items-center">
+                        <a href="/Login/" class="nav-link text-body font-weight-bold px-0" >
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none">Sign In</span>
                         </a>
-                    </li>
+                    </li> -->
+                    
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
@@ -59,10 +63,8 @@
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item px-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0">
-                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                        </a>
+                    <li class="nav-item px-2 d-flex align-items-center">
+                        
                     </li>
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -142,42 +144,54 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    *****
-
-    <div class="right_col">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-
-                <div class="x_title">
-                    <h2>Alerta <?php echo $titulo; ?>:</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="btn btn-success" href="<?php echo $regreso; ?>">Regresar</a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-
-                <div class="x_content">
-                    <br />
-                    <div class="alert alert-<?php echo $class; ?> alert-dismissable">
-                        <button type="button" class="btn btn-danger close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <?php echo $mensaje; ?>
-                        <?php $redireccion ?>
-                        <?php
-                        ob_start();
-                        //header("refresh: 3; url = $regreso");
-                        header("url = $regreso");
-                        ob_end_flush();
-                        ?>
-                        <a href="<?php echo ($regreso) ? $regreso : '/'?>" class="alert-link">Regreso</a>.
+    <div class="container-fluid py-3 col-md-12">
+        <div class="card card-body" id="profile">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-auto col-4">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="/assets/img/Empresa.png" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                     </div>
+                </div>
+                <div class="col-sm-auto col-8">
+                    <div class="h-100">
+                        <h5 class="mb-1 font-weight-bolder col-sm-auto col-8">
+                            Cuentas
+                        </h5>
+                        <p class="mb-0 font-weight-bold text-sm col-sm-auto col-8">
+                            Registrados
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex"></div>
+            </div>
+        </div>
+        <br>
+        <a href="/Cuenta/Add" type="button" class="btn btn-primary btn-sm">Nuevo</a>
+        <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+        <br>
+        <div class="col-12">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"></th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Empresa</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha de Alta</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                            <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Alta</th> -->
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php echo $tabla; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
 </main>
 
-<!--/Body-->
-<!--Footer-->
-<?php echo $footer;?>
-<!--/Footer-->
+
+<?php echo $footer; ?>

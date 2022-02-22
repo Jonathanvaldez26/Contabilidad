@@ -6,9 +6,9 @@ use \Core\View;
 use \Core\MasterDom;
 use \App\controllers\Contenedor;
 use \Core\Controller;
-use \App\models\Empresa AS EmpresaDao;
+use \App\models\OrdenPago AS OrdenPagoDao;
 
-class Empresa extends Controller{
+class OrdenPago extends Controller{
 
     private $_contenedor;
 
@@ -18,8 +18,8 @@ class Empresa extends Controller{
         View::set('header',$this->_contenedor->header());
         View::set('footer',$this->_contenedor->footer());
 
-        //if(Controller::getPermisosUsuario($this->__usuario, "seccion_empresas", 1) ==0)
-        //header('Location: /Home/');
+        //if(Controller::getPermisosUsuario($this->__usuario, "seccion_ordenes_pago", 1) ==0)
+        //header('Location: /Principal/');
         //Este codigo es para dar permisos de administrador o a los usuarios
 
     }
@@ -29,57 +29,6 @@ class Empresa extends Controller{
     }
 
     public function index() {
-      $extraHeader =<<<html
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
-            <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-            <title>
-               GRUPO LAHE
-            </title>
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-            <!-- Nucleo Icons -->
-            <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- Font Awesome Icons -->
-            <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- CSS Files -->
-            <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
-            <!-- TEMPLATE VIEJO-->
-            <link rel="stylesheet" href="/css/alertify/alertify.core.css" />
-            <link rel="stylesheet" href="/css/alertify/alertify.default.css" id="toggleCSS" />
-
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
-            <title>
-              Soft UI Dashboard PRO by Creative Tim
-            </title>
-            <!--     Fonts and icons     -->
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-            <!-- Nucleo Icons -->
-            <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- Font Awesome Icons -->
-            <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- CSS Files -->
-            <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
-
-
-           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-            
-           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-            <!-- TEMPLATE VIEJO-->
-        </head>
-html;
       $extraFooter =<<<html
       <script>
         $(document).ready(function(){
@@ -113,14 +62,15 @@ html;
 
             });
 
+
             $("#export_pdf").click(function(){
-              $('#all').attr('action', '/Empresa/generarPDF/');
+              $('#all').attr('action', '/OrdenPago/generarPDF/');
               $('#all').attr('target', '_blank');
               $("#all").submit();
             });
 
             $("#export_excel").click(function(){
-              $('#all').attr('action', '/Empresa/generarExcel/');
+              $('#all').attr('action', '/OrdenPago/generarExcel/');
               $('#all').attr('target', '_blank');
               $("#all").submit();
             });
@@ -131,7 +81,7 @@ html;
                 alertify.confirm('¿Segúro que desea eliminar lo seleccionado?', function(response){
                   if(response){
                     $('#all').attr('target', '');
-                    $('#all').attr('action', '/Empresa/delete');
+                    $('#all').attr('action', '/OrdenPago/delete');
                     $("#all").submit();
                     alertify.success("Se ha eliminado correctamente");
                   }
@@ -144,13 +94,13 @@ html;
         });
       </script>
 html;
-      $empresas = EmpresaDao::getAll();
+      $ordenes_pago = OrdenPagoDao::getAll();
       //$usuario = $this->__usuario;
-      //$editarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 5)==1)? "" : "style=\"display:none;\"";
-      //$eliminarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 6)==1)? "" : "style=\"display:none;\"";
+      //$editarHidden = (Controller::getPermisosUsuario($usuario, "seccion_ordenes_pago", 5)==1)? "" : "style=\"display:none;\"";
+      //$eliminarHidden = (Controller::getPermisosUsuario($usuario, "seccion_ordenes_pago", 6)==1)? "" : "style=\"display:none;\"";
       $tabla= '';
       $status= '';
-      foreach ($empresas as $key => $value) {
+      foreach ($ordenes_pago as $key => $value) {
           if($value['status'] = 1){
               $status =<<<html
                  <span class="badge badge-dot me-1">
@@ -167,7 +117,7 @@ html;
           }
         $tabla.=<<<html
                 <tr>
-                <td><input type="checkbox" name="borrar[]" value="{$value['catalogo_empresa_id']}"/></td>
+                <td><input type="checkbox" name="borrar[]" value="{$value['catalogo_orden_pago_id']}"/></td>
                 <td><h6 class="mb-0 text-sm">{$status}{$value['clave']}</h6></td>
                 <td>
                     <div class="d-flex px-2 py-1">
@@ -175,30 +125,53 @@ html;
                               <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image">
                          </div>
                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{$value['rfc']}</h6>
+                            <h6 class="mb-0 text-sm">{$value['nombre']}</h6>
                          </div>
                     </div>
                 </td>
+                <td>
+                    <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{$value['apellido_paterno']}</h6>
+                          </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{$value['apellido_materno']}</h6>
+                          </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{$value['email']}</h6>
+                          </div>
+                    </div>
+                </td>
                 <td><p class="text-sm text-secondary mb-0">{$value['razon_social']}</p></td>
-                <td><span class="text-secondary text-center text-sm">{$value['fecha_alta']}</span></td>
+                <td><span class="text-secondary text-sm">{$value['fecha_alta']}</span></td>
                 <td class="center" >
-                    <a href="/Empresa/edit/{$value['catalogo_empresa_id']}" type="submit" name="id" class="btn btn-outline-primary"><span class="fa fa-pencil-square-o"></span> </a>
-                    <a href="/Empresa/show/{$value['catalogo_empresa_id']}" type="submit" name="id_empresa" class="btn btn-outline-success"><span class="fa fa-eye" ></span> </a>
-                    <button type="submit" name="id_empresa" class="btn btn-outline-info"><span class="fa fa-eye"></span></button>                
+                    <a href="/OrdenPago/edit/{$value['catalogo_orden_pago_id']}" {$editarHidden} type="submit" name="id" class="btn btn-outline-primary"><span class="fa fa-pencil-square-o"></span> </a>
+                    <a href="/OrdenPago/show/{$value['catalogo_orden_pago_id']}" type="submit" name="id_orden_pago" class="btn btn-outline-success"><span class="fa fa-eye" ></span> </a>
                 </td>
                 </tr>
 html;
       }
-      $pdfHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 2)==1)?  "" : "style=\"display:none;\"";
-      $excelHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 3)==1)? "" : "style=\"display:none;\"";
-      $agregarHidden = (Controller::getPermisosUsuario($usuario, "seccion_empresas", 4)==1)? "" : "style=\"display:none;\"";
-      View::set('pdfHidden',$pdfHidden);
-      View::set('excelHidden',$excelHidden);
-      View::set('agregarHidden',$agregarHidden);
+
+      // $pdfHidden = (Controller::getPermisosUsuario($usuario, "seccion_ordenes_pago", 2)==1)?  "" : "style=\"display:none;\"";
+      // $excelHidden = (Controller::getPermisosUsuario($usuario, "seccion_ordenes_pago", 3)==1)? "" : "style=\"display:none;\"";
+      // $agregarHidden = (Controller::getPermisosUsuario($usuario, "seccion_ordenes_pago", 4)==1)? "" : "style=\"display:none;\"";
+      // View::set('pdfHidden',$pdfHidden);
+      // View::set('excelHidden',$excelHidden);
+      // View::set('agregarHidden',$agregarHidden);
+      //View::set('editarHidden',$editarHidden);
+      //View::set('eliminarHidden',$eliminarHidden);
       View::set('tabla',$tabla);
-      View::set('header',$this->_contenedor->header($extraheader));
+      View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
-      View::render("empresa_all");
+      View::render("orden_pago_all");
     }
 
     public function Add(){
@@ -211,7 +184,7 @@ html;
               $.ajax({
                 type:"POST",
                 async: false,
-                url: "/Empresa/validarRFC", // script to validate in server side
+                url: "/OrdenPago/validarRFC", // script to validate in server side
                 data: {
                     nombre: function() {
                       return $("#rfc").val();
@@ -286,7 +259,7 @@ html;
           });//fin del jquery validate
 
           $("#btnCancel").click(function(){
-            window.location.href = "/Empresa/";
+            window.location.href = "/OrdenPago/";
           });//fin del btnAdd
 
         });//fin del document.ready
@@ -294,50 +267,9 @@ html;
 html;
 
       View::set('header',$this->_contenedor->header(''));
-      View::render("empresa_add");
+      View::render("orden_pago_add");
       View::set('footer',$this->_contenedor->footer($extraFooter));
 
-    }
-
-    public function empresaAdd(){
-        $empresa = new \stdClass();
-
-        $rfc = MasterDom::getDataAll('rfc');
-        $rfc = MasterDom::procesoAcentosNormal($rfc);
-        $empresa->_rfc = $rfc;
-
-        $rest = substr("rfc", 0, -10);
-        $empresa->_clave = $rest;
-
-        $razon_social = MasterDom::getDataAll('razon_social');
-        $razon_social = MasterDom::procesoAcentosNormal($razon_social);
-        $empresa->_razon_social = $razon_social;
-
-        $email= MasterDom::getDataAll('email');
-        $email= MasterDom::procesoAcentosNormal($email);
-        $empresa->_email = $email;
-
-        $telefono_uno= MasterDom::getDataAll('telefono_uno');
-        $empresa->_telefono_uno = $telefono_uno;
-
-        $telefono_dos= MasterDom::getDataAll('telefono_dos');
-        $empresa->_telefono_dos = $telefono_dos;
-
-        $domicilio_fiscal= MasterDom::getDataAll('domicilio_fiscal');
-        $domicilio_fiscal= MasterDom::procesoAcentosNormal($domicilio_fiscal);
-        $empresa->_domicilio_fiscal = $domicilio_fiscal;
-
-        $sitio_web= MasterDom::getDataAll('sitio_web');
-        $empresa->_sitio_web = $sitio_web;
-
-        $empresa->_status = MasterDom::getData('status');
-
-        $id = EmpresaDao::insert($empresa);
-        if($id >= 1){
-            $this->alerta($id,'add');
-        }else{
-            $this->alerta($id,'error');
-        }
     }
 
     public function edit($id){
@@ -350,13 +282,13 @@ html;
               $.ajax({
                 type:"POST",
                 async: false,
-                url: "/Empresa/validarOtroRFC", // script to validate in server side
+                url: "/OrdenPago/validarOtroRFC", // script to validate in server side
                 data: {
                     nombre: function() {
                       return $("#nombre").val();
                     },
                     id: function(){
-                      return $("#catalogo_empresa_id").val();
+                      return $("#catalogo_orden_pago_id").val();
                     }
                 },
                 success: function(data) {
@@ -405,81 +337,30 @@ html;
           });//fin del jquery validate
 
           $("#btnCancel").click(function(){
-            window.location.href = "/Empresa/";
+            window.location.href = "/OrdenPago/";
           });//fin del btnAdd
 
         });//fin del document.ready
       </script>
 html;
-      $empresa = EmpresaDao::getById($id);
+      $orden_pago = OrdenPagoDao::getById($id);
 
       $status = "";
-      foreach (EmpresaDao::getStatus() as $key => $value) {
-        $selected = ($empresa['status']==$value['catalogo_status_id'])? 'selected' : '';
+      foreach (OrdenPagoDao::getStatus() as $key => $value) {
+        $selected = ($orden_pago['status']==$value['catalogo_status_id'])? 'selected' : '';
         $status .=<<<html
         <option {$selected} value="{$value['catalogo_status_id']}">{$value['nombre']}</option>
 html;
       }
 
       View::set('status',$status);
-      View::set('empresa',$empresa);
+      View::set('orden_pago',$orden_pago);
       View::set('header',$this->_contenedor->header(''));
       View::set('footer',$this->_contenedor->footer($extraFooter));
-      View::render("empresa_edit");
+      View::render("orden_pago_edit");
     }
 
     public function show($id){
-      $header =<<<html
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
-            <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-            <title>
-               GRUPO LAHE
-            </title>
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-            <!-- Nucleo Icons -->
-            <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- Font Awesome Icons -->
-            <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- CSS Files -->
-            <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
-            <!-- TEMPLATE VIEJO-->
-            <link rel="stylesheet" href="/css/alertify/alertify.core.css" />
-            <link rel="stylesheet" href="/css/alertify/alertify.default.css" id="toggleCSS" />
-
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
-            <title>
-              Soft UI Dashboard PRO by Creative Tim
-            </title>
-            <!--     Fonts and icons     -->
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-            <!-- Nucleo Icons -->
-            <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- Font Awesome Icons -->
-            <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-            <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-            <!-- CSS Files -->
-            <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
-
-
-           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-            
-           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-            <!-- TEMPLATE VIEJO-->
-        </head>
-html;
       $extraFooter =<<<html
       <script>
         $(document).ready(function(){
@@ -489,13 +370,13 @@ html;
               $.ajax({
                 type:"POST",
                 async: false,
-                url: "/Empresa/validarOtroRFC", // script to validate in server side
+                url: "/OrdenPago/validarOtroRFC", // script to validate in server side
                 data: {
                     nombre: function() {
                       return $("#nombre").val();
                     },
                     id: function(){
-                      return $("#catalogo_empresa_id").val();
+                      return $("#catalogo_orden_pago_id").val();
                     }
                 },
                 success: function(data) {
@@ -548,44 +429,85 @@ html;
           });//fin del jquery validate
 
           $("#btnCancel").click(function(){
-            window.location.href = "/Empresa/";
+            window.location.href = "/OrdenPago/";
           });//fin del btnAdd
 
         });//fin del document.ready
       </script>
 html;
-      $empresa = EmpresaDao::getById($id);
-      View::set('empresa',$empresa);
-      View::set('header',$header);
+      $orden_pago = OrdenPagoDao::getById($id);
+      View::set('orden_pago',$orden_pago);
+      View::set('header',$this->_contenedor->header(''));
       View::set('footer',$this->_contenedor->footer($extraFooter));
-      View::render("empresa_view");
+      View::render("orden_pago_view");
     }
 
     public function delete(){
       $id = MasterDom::getDataAll('borrar');
       $array = array();
       foreach ($id as $key => $value) {
-        $id = EmpresaDao::delete($value);
+        $id = OrdenPagoDao::delete($value);
         if($id['seccion'] == 2){
           array_push($array, array('seccion' => 2, 'id' => $id['id'] ));
         }else if($id['seccion'] == 1){
           array_push($array, array('seccion' => 1, 'id' => $id['id'] ));
         }
       }
-      $this->alertas("Eliminacion de Empresas", $array, "/Empresa/");
+      $this->alertas("Eliminacion de Ordenes de Pago", $array, "/OrdenPago/");
     }
 
-    public function empresaEdit(){
-      $empresa = new \stdClass();
-      $empresa->_catalogo_empresa_id = MasterDom::getData('catalogo_empresa_id');
-      $id = EmpresaDao::verificarRelacion(MasterDom::getData('catalogo_empresa_id'));
+    public function orden_pagoAdd(){
+      $orden_pago = new \stdClass();
+
+      $rfc = MasterDom::getDataAll('rfc');
+      $rfc = MasterDom::procesoAcentosNormal($rfc);
+      $orden_pago->_rfc = $rfc;
+
+      $rest = substr("rfc", 0, -10);
+      $orden_pago->_clave = $rest;
+
+      $razon_social = MasterDom::getDataAll('razon_social');
+      $razon_social = MasterDom::procesoAcentosNormal($razon_social);
+      $orden_pago->_razon_social = $razon_social;
+
+      $email= MasterDom::getDataAll('email');
+      $email= MasterDom::procesoAcentosNormal($email);
+      $orden_pago->_email = $email;
+
+      $telefono_uno= MasterDom::getDataAll('telefono_uno');
+      $orden_pago->_telefono_uno = $telefono_uno;
+
+      $telefono_dos= MasterDom::getDataAll('telefono_dos');
+      $orden_pago->_telefono_dos = $telefono_dos;
+
+      $domicilio_fiscal= MasterDom::getDataAll('domicilio_fiscal');
+      $domicilio_fiscal= MasterDom::procesoAcentosNormal($domicilio_fiscal);
+      $orden_pago->_domicilio_fiscal = $domicilio_fiscal;
+
+      $sitio_web= MasterDom::getDataAll('sitio_web');
+      $orden_pago->_sitio_web = $sitio_web;
+
+      $orden_pago->_status = MasterDom::getData('status');
+
+      $id = OrdenPagoDao::insert($orden_pago);
+      if($id >= 1){
+        $this->alerta($id,'add');
+      }else{
+        $this->alerta($id,'error');
+      }
+    }
+
+    public function orden_pagoEdit(){
+      $orden_pago = new \stdClass();
+      $orden_pago->_catalogo_orden_pago_id = MasterDom::getData('catalogo_orden_pago_id');
+      $id = OrdenPagoDao::verificarRelacion(MasterDom::getData('catalogo_orden_pago_id'));
       $nombre = MasterDom::getDataAll('nombre');
       $nombre = MasterDom::procesoAcentosNormal($nombre);
-      $empresa->_nombre = $nombre;
+      $orden_pago->_nombre = $nombre;
       $descripcion = MasterDom::getDataAll('descripcion');
       $descripcion = MasterDom::procesoAcentosNormal($descripcion);
-      $empresa->_descripcion = $descripcion;
-      $empresa->_status = MasterDom::getData('status');
+      $orden_pago->_descripcion = $descripcion;
+      $orden_pago->_status = MasterDom::getData('status');
 
       $array = array();
       if($id['seccion'] == 2){
@@ -593,25 +515,25 @@ html;
         //
         $idStatus = (MasterDom::getData('status')!=2) ? true : false;
         if($idStatus){
-          if(EmpresaDao::update($empresa) > 0)
+          if(OrdenPagoDao::update($orden_pago) > 0)
             $this->alerta($id,'edit');
           else
             $this->alerta($id,'nothing');
         }else{
-          $this->alertas("Eliminacion de Empresas", $array, "/Empresa/");
+          $this->alertas("Eliminacion de Ordenes de Pago", $array, "/OrdenPago/");
         }
       }
 
       if($id['seccion'] == 1){
         array_push($array, array('seccion' => 1, 'id' => $id['id'] ));
 
-        //$id = EmpresaDao::update($empresa);
+        //$id = OrdenPagoDao::update($orden_pago);
 
         if(MasterDom::getData('status') == 2){
-          EmpresaDao::update($empresa);
-          $this->alerta(MasterDom::getData('catalogo_empresa_id'),'delete');
+          OrdenPagoDao::update($orden_pago);
+          $this->alerta(MasterDom::getData('catalogo_orden_pago_id'),'delete');
         }else{
-          if(EmpresaDao::update($empresa) >= 1) $this->alerta($id,'edit');
+          if(OrdenPagoDao::update($orden_pago) >= 1) $this->alerta($id,'edit');
           else $this->alerta("",'no_cambios');
         }
 
@@ -619,7 +541,7 @@ html;
     }
 
     public function validarRFC(){
-      $dato = EmpresaDao::getRFC($_POST['rfc']);
+      $dato = OrdenPagoDao::getRFC($_POST['rfc']);
       if($dato == 1){
         echo "true";
       }else{
@@ -628,12 +550,12 @@ html;
     }
 
     public function validarOtroRFC(){
-      $id = EmpresaDao::getIdComparacion($_POST['id'], $_POST['nombre']);
+      $id = OrdenPagoDao::getIdComparacion($_POST['id'], $_POST['nombre']);
       if($id == 1)
         echo "true";
 
       if($id == 2){
-        $dato = EmpresaDao::getNombreEmpresa($_POST['nombre']);
+        $dato = OrdenPagoDao::getNombreOrdenPago($_POST['nombre']);
         if($dato == 2){
           echo "true";
         }else{
@@ -673,7 +595,7 @@ $tabla =<<<html
   <img class="imagen" src="/img/ag_logo.png"/>
   <br>
   <div style="page-break-inside: avoid;" align='center'>
-  <H1 class="titulo">Empresas</H1>
+  <H1 class="titulo">Ordenes de Pago</H1>
   <table border="0" style="width:100%;text-align: center">
     <tr style="background-color:#B8B8B8;">
     <th><strong>Id</strong></th>
@@ -685,24 +607,24 @@ html;
 
       if($ids!=''){
         foreach ($ids as $key => $value) {
-          $empresa = EmpresaDao::getByIdReporte($value);
+          $orden_pago = OrdenPagoDao::getByIdReporte($value);
             $tabla.=<<<html
               <tr style="background-color:#B8B8B8;">
-              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['catalogo_empresa_id']}</td>
-              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['nombre']}</td>
-              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['descripcion']}</td>
-              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['status']}</td>
+              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['catalogo_orden_pago_id']}</td>
+              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['nombre']}</td>
+              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['descripcion']}</td>
+              <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['status']}</td>
               </tr>
 html;
         }
       }else{
-        foreach (EmpresaDao::getAll() as $key => $empresa) {
+        foreach (OrdenPagoDao::getAll() as $key => $orden_pago) {
           $tabla.=<<<html
             <tr style="background-color:#B8B8B8;">
-            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['catalogo_empresa_id']}</td>
-            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['nombre']}</td>
-            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['descripcion']}</td>
-            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$empresa['status']}</td>
+            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['catalogo_orden_pago_id']}</td>
+            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['nombre']}</td>
+            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['descripcion']}</td>
+            <td style="height:auto; width: 200px;background-color:#E4E4E4;">{$orden_pago['status']}</td>
             </tr>
 html;
           }
@@ -719,7 +641,7 @@ html;
 
       exit;
       //$ids = MasterDom::getDataAll('borrar');
-      //echo shell_exec('php -f /home/granja/backend/public/librerias/mpdf_apis/Api.php Empresa '.json_encode(MasterDom::getDataAll('borrar')));
+      //echo shell_exec('php -f /home/granja/backend/public/librerias/mpdf_apis/Api.php OrdenPago '.json_encode(MasterDom::getDataAll('borrar')));
     }
 
     public function generarExcel(){
@@ -770,12 +692,12 @@ html;
       $fila = 9;
       $adaptarTexto = true;
 
-      $controlador = "Empresa";
+      $controlador = "OrdenPago";
       $columna = array('A','B','C','D');
       $nombreColumna = array('Id','Nombre','Descripción','Status');
-      $nombreCampo = array('catalogo_empresa_id','nombre','descripcion','status');
+      $nombreCampo = array('catalogo_orden_pago_id','nombre','descripcion','status');
 
-      $objPHPExcel->getActiveSheet()->SetCellValue('A'.$fila, 'Reporte de Empresas');
+      $objPHPExcel->getActiveSheet()->SetCellValue('A'.$fila, 'Reporte de Ordenes de x  Pago');
       $objPHPExcel->getActiveSheet()->mergeCells('A'.$fila.':'.$columna[count($nombreColumna)-1].$fila);
       $objPHPExcel->getActiveSheet()->getStyle('A'.$fila)->applyFromArray($estilo_titulo);
       $objPHPExcel->getActiveSheet()->getStyle('A'.$fila)->getAlignment()->setWrapText($adaptarTexto);
@@ -794,16 +716,16 @@ html;
       /* FILAS DEL ARCHIVO EXCEL */
       if($ids!=''){
         foreach ($ids as $key => $value) {
-          $empresa = EmpresaDao::getByIdReporte($value);
+          $orden_pago = OrdenPagoDao::getByIdReporte($value);
           foreach ($nombreCampo as $key => $campo) {
-            $objPHPExcel->getActiveSheet()->SetCellValue($columna[$key].$fila, html_entity_decode($empresa[$campo], ENT_QUOTES, "UTF-8"));
+            $objPHPExcel->getActiveSheet()->SetCellValue($columna[$key].$fila, html_entity_decode($orden_pago[$campo], ENT_QUOTES, "UTF-8"));
             $objPHPExcel->getActiveSheet()->getStyle($columna[$key].$fila)->applyFromArray($estilo_celda);
             $objPHPExcel->getActiveSheet()->getStyle($columna[$key].$fila)->getAlignment()->setWrapText($adaptarTexto);
           }
           $fila +=1;
         }
       }else{
-        foreach (EmpresaDao::getAll() as $key => $value) {
+        foreach (OrdenPagoDao::getAll() as $key => $value) {
           foreach ($nombreCampo as $key => $campo) {
             $objPHPExcel->getActiveSheet()->SetCellValue($columna[$key].$fila, html_entity_decode($value[$campo], ENT_QUOTES, "UTF-8"));
             $objPHPExcel->getActiveSheet()->getStyle($columna[$key].$fila)->applyFromArray($estilo_celda);
@@ -835,7 +757,7 @@ html;
     }
 
     public function alerta($id, $parametro){
-      $regreso = "/Empresa/";
+      $regreso = "/OrdenPago/";
 
       if($parametro == 'add'){
         $mensaje = "Se ha agregado correctamente";
@@ -848,7 +770,7 @@ html;
       }
 
       if($parametro == 'delete'){
-        $mensaje = "Se ha eliminado la empresa {$id}, ya que cambiaste el estatus a eliminado";
+        $mensaje = "Se ha eliminado la orden_pago {$id}, ya que cambiaste el estatus a eliminado";
         $class = "success";
       }
 

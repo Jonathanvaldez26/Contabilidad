@@ -22,8 +22,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Clientes</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Empresas</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Clientes</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Responsable/">Responsables</a></li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agregar</li>
                 </ol>
             </nav>
@@ -142,42 +142,92 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    *****
-
-    <div class="right_col">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-
-                <div class="x_title">
-                    <h2>Alerta <?php echo $titulo; ?>:</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="btn btn-success" href="<?php echo $regreso; ?>">Regresar</a></li>
-                    </ul>
-                    <div class="clearfix"></div>
+    <br>
+    <div class="container-fluid col-md-8 card" id="basic-info">
+        <form class="form-horizontal" id="add" action="/Responsable/responsableAdd" method="POST">
+            <div class="form-group ">
+                <div class="card-header">
+                    <h5>Datos Generales para Agregar al Responsable</h5>
                 </div>
-
-                <div class="x_content">
-                    <br />
-                    <div class="alert alert-<?php echo $class; ?> alert-dismissable">
-                        <button type="button" class="btn btn-danger close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <?php echo $mensaje; ?>
-                        <?php $redireccion ?>
-                        <?php
-                        ob_start();
-                        //header("refresh: 3; url = $regreso");
-                        header("url = $regreso");
-                        ob_end_flush();
-                        ?>
-                        <a href="<?php echo ($regreso) ? $regreso : '/'?>" class="alert-link">Regreso</a>.
+                <div class="card-body pt-0">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label class="form-label mt-2">Clave *</label>
+                            <div class="input-group">
+                                <input id="clave" name="clave" class="form-control" type="text" placeholder="ALL0325" required="required" onfocus="focused(this)" onfocusout="defocused(this)" disabled>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label class="form-label">Nombre *</label>
+                            <div class="input-group">
+                                <input id="nombre" name="nombre" class="form-control" type="text" placeholder="Juan" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="form-label">Apellido Paterno *</label>
+                            <div class="input-group">
+                                <input id="apellido_paterno" name="apellido_paterno" class="form-control" type="text" placeholder="Perez" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="form-label">Apellido Materno *</label>
+                            <div class="input-group">
+                                <input id="apellido_materno" name="apellido_materno" class="form-control" type="text" placeholder="Gonzales" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group row">
+                        <div class="col-6">
+                            <label class="form-label mt-4">Apellido Materno *</label>
+                            <div class="input-group">
+                                <input id="apellido_materno" name="apellido_materno" class="form-control" type="text" placeholder="Gonzales" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label class="form-label mt-4">Email *</label>
+                            <div class="input-group">
+                                <input id="email" name="email" class="form-control" type="email" placeholder="ejemplo@grupolahe.com" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label mt-4">Número de Teléfono *</label>
+                            <div class="input-group">
+                                <input id="telefono" name="telefono" class="form-control" type="number" placeholder="+52 565 631 621" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <div class="form-group row">
+                        <div class="col-12">
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="domicilio_fiscal">Domicilio Fiscal<span class="required"> *</span></label>
+                            <div class="input-group">
+                                <textarea class="form-control" name="domicilio_fiscal" id="domicilio_fiscal" placeholder="Dr. Enrique Gonzalez Martinez No.232, Col. Santa Maria la Ribera, Deleg. Cuahutemoc, C.P 06400, Distrito Federal, México. "></textarea>
+                            </div>
+                        </div>
+                    </div> -->
+                    <br>
+                    <div class="form-group">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+                                <div class="form-check form-switch ms-2">
+                                    <button class="btn btn-outline-primary mb-0 ms-auto" type="submit" id="btnAdd">Registrar</button>
+                                    <button class="btn btn-outline-secondary mb-0 ms-2" type="button" id="btnCancel">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="resultado">
 
+                    </div>
+                   </div>
+            </div>
+        </form>
+    </div>
+    <br>
 </main>
 
-<!--/Body-->
-<!--Footer-->
 <?php echo $footer;?>
-<!--/Footer-->

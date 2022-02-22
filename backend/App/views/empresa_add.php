@@ -144,7 +144,7 @@
     <!-- End Navbar -->
     <br>
     <div class="container-fluid col-md-8 card" id="basic-info">
-        <form class="form-horizontal" id="add" action="/Empresa/empresaAdd" method="POST">
+        <form method="POST" class="form-horizontal" id="add" action="/Empresa/empresaAdd">
             <div class="form-group ">
                 <div class="card-header">
                     <h5>Datos Generales para Agregar la Empresa</h5>

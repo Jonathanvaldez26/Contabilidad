@@ -4,21 +4,23 @@
     <div class="x_panel tile fixed_height_240">
       <div class="x_title">
         <br><br>
-        <h1> Datos de la Empresa <br> <?php echo $empresa['razon_social']; ?> </h1>
+        <h1> Datos de la Cuenta <small> con id <?php echo $cuenta['catalogo_cuenta_id']; ?> </small></h1>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form class="form-horizontal" id="edit" action="/Empresa/empresaEdit" method="POST">
+        <form class="form-horizontal" id="edit" action="/Cuenta/cuentaEdit" method="POST">
           <div class="form-group ">
 
             <div class="dashboard-widget-content">
-              <ul class="list-unstyled widget">
+              <ul class="list-unstyled timeline widget">
                 <li>
                   <div class="block">
                     <div class="block_content">
-                      <h4 class="title">
-                        <a>Id:</a>
-                      <?php echo $empresa['catalogo_empresa_id']; ?></h4>
+                      <h2 class="title">
+                        <a>ID:</a>
+                      </h2>
+                      <div class="byline"></div>
+                      <p class="excerpt"><?php echo $cuenta['catalogo_cuenta_id']; ?></p>
                     </div>
                   </div>
                 </li>
@@ -26,9 +28,11 @@
                 <li>
                   <div class="block">
                     <div class="block_content">
-                      <h4 class="title">
-                        <a>Empresa:</a>
-                      <?php echo $empresa['razon_social']; ?></h4>
+                      <h2 class="title">
+                        <a>Estatus</a>
+                      </h2>
+                      <div class="byline"></div>
+                      <p class="excerpt"><?php echo $cuenta['status']; ?></p>
                     </div>
                   </div>
                 </li>
@@ -36,9 +40,11 @@
                 <li>
                   <div class="block">
                     <div class="block_content">
-                      <h4 class="title">
-                        <a>RFC:</a>
-                      <?php echo $empresa['rfc']; ?></h4>
+                      <h2 class="title">
+                        <a>Empresa</a>
+                      </h2>
+                      <div class="byline"></div>
+                      <p class="excerpt"><?php echo $cuenta['fecha_alta']; ?></p>
                     </div>
                   </div>
                 </li>

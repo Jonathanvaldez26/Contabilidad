@@ -4,25 +4,33 @@
     <div class="x_panel tile fixed_height_240">
       <div class="x_title">
         <br><br>
-        <h1> Editar Empresa</h1>
+        <h1> Editar Responsable</h1>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form class="form-horizontal" id="edit" action="/Empresa/empresaEdit" method="POST">
+        <form class="form-horizontal" id="edit" action="/Responsable/responsableEdit" method="POST">
           <div class="form-group ">
 
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rfc">RFC <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" name="rfc" id="rfc" class="form-control col-md-7 col-xs-12" placeholder="RFC de la Empresa" value="<?php echo $empresa['rfc']; ?>">
+                <input type="text" name="nombre" id="nombre" class="form-control col-md-7 col-xs-12" placeholder="RFC de la Responsable" value="<?php echo $responsable['nombre']; ?>">
               </div>
               <span id="availability"></span>
             </div>
 
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="razon_social">Razon Social <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido_paterno">Apellido Paterno <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" name="razon_social" id="razon_social" class="form-control col-md-7 col-xs-12" placeholder="Grupo LAHE S.A. de C.V." value="<?php echo $empresa['razon_social']; ?>">
+                <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control col-md-7 col-xs-12" placeholder="Grupo LAHE S.A. de C.V." value="<?php echo $responsable['apellido_paterno']; ?>">
+              </div>
+              <span id="availability"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido_materno">Apellido Materno <span class="required">*</span></label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" name="apellido_materno" id="apellido_materno" class="form-control col-md-7 col-xs-12" placeholder="ejemplo@grupolahe.com" value="<?php echo $responsable['apellido_materno']; ?>">
               </div>
               <span id="availability"></span>
             </div>
@@ -36,25 +44,24 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefono_uno">Telefono Uno <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefono">Telefono <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="number" name="telefono_uno" id="telefono_uno" class="form-control col-md-7 col-xs-12" placeholder="+52 0987654321" value="<?php echo $empresa['telefono_uno']; ?>">
+                <input type="number" name="telefono" id="telefono" class="form-control col-md-7 col-xs-12" placeholder="+52 0987654321" value="<?php echo $responsable['telefono']; ?>">
               </div>
               <span id="availability"></span>
             </div>
 
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefono_dos">Telefono Dos <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="domicilio_fiscal">Domicilio Fiscal <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="number" name="telefono_dos" id="telefono_dos" class="form-control col-md-7 col-xs-12" placeholder="+52 0987654321" value="<?php echo $empresa['telefono_dos']; ?>">
+                <textarea class="form-control" name="domicilio_fiscal" id="domicilio_fiscal" placeholder="Dr. Enrique Gonzalez Martinez No.232, Col. Santa Maria la Ribera, Deleg. Cuahutemoc, C.P 06400, Distrito Federal, México. "><?php echo $responsable['domicilio_fiscal']; ?></textarea>
               </div>
-              <span id="availability"></span>
             </div>
 
             <!-- <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripci&oacute;n <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripci&oacute;n la empresa"><?php echo $empresa['descripcion']; ?></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripci&oacute;n la responsable"><?php echo $responsable['descripcion']; ?></textarea>
               </div>
             </div> -->
 
@@ -68,7 +75,7 @@
               </div>
             </div> -->
 
-            <input type="hidden" name="catalogo_empresa_id" id="catalogo_empresa_id" value="<?php echo $empresa['catalogo_empresa_id']; ?>">
+            <input type="hidden" name="catalogo_responsable_id" id="catalogo_responsable_id" value="<?php echo $responsable['catalogo_responsable_id']; ?>">
 
             <div class="form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
